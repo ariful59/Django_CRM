@@ -1,68 +1,135 @@
 {% extends 'base.html' %}
 
 {% block content %}
+  <header>
+{#    <div id="headerCarousel" class="carousel slide" data-bs-ride="carousel">#}
+{#      <div class="carousel-inner">#}
+{#        <!-- First Slide -->#}
+{#        <div class="carousel-item active">#}
+{#          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" class="d-block w-100" alt="Slide 1">#}
+{#          <div class="carousel-caption d-none d-md-block">#}
+{#            <h5>Welcome to Our CRM System</h5>#}
+{#            <p>Manage your customer relationships with ease.</p>#}
+{#          </div>#}
+{#        </div>#}
+{#        <!-- Second Slide -->#}
+{#        <div class="carousel-item">#}
+{#          <img src="https://www.w3schools.com/bootstrap/ny.jpg" class="d-block w-100" alt="Slide 2">#}
+{#          <div class="carousel-caption d-none d-md-block">#}
+{#            <h5>Add Customer Records</h5>#}
+{#            <p>Effortlessly add and manage customer records.</p>#}
+{#          </div>#}
+{#        </div>#}
+{#        <!-- Third Slide -->#}
+{#        <div class="carousel-item">#}
+{#          <img src="https://cssslider.com/sliders/demo-33/data1/images/forest653448_1280.jpg" class="d-block w-100" alt="Slide 3">#}
+{#          <div class="carousel-caption d-none d-md-block">#}
+{#            <h5>Stay Organized</h5>#}
+{#            <p>Keep all your customer information in one place.</p>#}
+{#          </div>#}
+{#        </div>#}
+{#      </div>#}
+{#      <button class="carousel-control-prev" type="button" data-bs-target="#headerCarousel" data-bs-slide="prev">#}
+{#        <span class="carousel-control-prev-icon" aria-hidden="true"></span>#}
+{#        <span class="visually-hidden">Previous</span>#}
+{#      </button>#}
+{#      <button class="carousel-control-next" type="button" data-bs-target="#headerCarousel" data-bs-slide="next">#}
+{#        <span class="carousel-control-next-icon" aria-hidden="true"></span>#}
+{#        <span class="visually-hidden">Next</span>#}
+{#      </button>#}
+{#    </div>#}
 
-{% if user.is_authenticated %}
-
-
-<table class="table table-striped table-hover table-bordered">
-  <thead class="table-dark">
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Phone</th>
-        <th scope="col">Address</th>
-      <th scope="col">Created At</th>
-      <th scope="col">ID</th>
-    </tr>
-  </thead>
-  <tbody>
-
-{% if records %}
-	{% for record in records %}
-		<tr>
-			<td>{{ record.first_name }} {{ record.last_name }}</td>
-			<td>{{ record.email }}</td>
-			<td>{{ record.phone }}</td>
-			<td>{{ record.address }}</td>
-			<td>{{ record.timestamp}}</td>
-			<td><a href="{% url 'specific_record' record.id %}">{{ record.id }}</a></td>
-		</tr>
-	{% endfor %}
-
-{% endif %}
-
-
-	  </tbody>
-	</table>
-
-
-
-
-{% else %}
-
-<div class="col-md-6 offset-md-3">
-<h1>Login</h1>
-<br/>
-
-<form method="POST" action="{% url 'home' %}">
-	{% csrf_token %}
-
-  <div class="mb-3">
-    <input type="text" class="form-control" name="username", placeholder="Username" required>
-
-  </div><br/>
-  <div class="mb-3">
-    <input type="password" class="form-control" name="password", placeholder="Password" required>
+  <div id="headerCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <!-- First Slide -->
+      <div class="carousel-item active">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" class="d-block w-100" alt="Slide 1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Welcome to Our CRM System</h5>
+          <p>Manage your customer relationships with ease.</p>
+        </div>
+      </div>
+      <!-- Second Slide -->
+      <div class="carousel-item">
+        <img src="https://www.w3schools.com/bootstrap/ny.jpg" class="d-block w-100" alt="Slide 2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Add Customer Records</h5>
+          <p>Effortlessly add and manage customer records.</p>
+        </div>
+      </div>
+      <!-- Third Slide -->
+      <div class="carousel-item">
+        <img src="https://cssslider.com/sliders/demo-33/data1/images/forest653448_1280.jpg" class="d-block w-100" alt="Slide 3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Stay Organized</h5>
+          <p>Keep all your customer information in one place.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#headerCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#headerCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
-  <br/>
-  <button type="submit" class="btn btn-secondary">Login</button>
+    {% if not user.is_authenticated %}
+      <!-- Login Form in the Center of the Carousel -->
+      <div class="login-overlay">
+        <div class="col-md-4 offset-md-4">
+          <div class="card shadow-lg">
+            <div class="card-body">
+              <h1 class="card-title text-center mb-4">Login</h1>
+              <form method="POST" action="{% url 'home' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <input type="text" class="form-control" name="username" placeholder="Username" required>
+                </div>
+                <div class="mb-3">
+                  <input type="password" class="form-control" name="password" placeholder="Password" required>
+                </div>
+                <button type="submit" class="btn btn-secondary w-100">Login</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </header>
 
-</form>
-
-</div>
-
-
-{% endif %}
-
+  {% if user.is_authenticated %}
+    <div class="container mt-5">
+      <table class="table table-striped table-hover table-bordered shadow-lg">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">Created At</th>
+            <th scope="col">ID</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if records %}
+            {% for record in records %}
+              <tr>
+                <td>{{ record.first_name }} {{ record.last_name }}</td>
+                <td>{{ record.email }}</td>
+                <td>{{ record.phone }}</td>
+                <td>{{ record.address }}</td>
+                <td>{{ record.timestamp }}</td>
+                <td><a href="{% url 'specific_record' record.id %}">{{ record.id }}</a></td>
+              </tr>
+            {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  {% else %}
+    <!-- Login form is already handled above in the overlay -->
+  {% endif %}
 {% endblock %}
+

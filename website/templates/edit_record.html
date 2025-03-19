@@ -1,21 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="col-md-6 offset-md-3">
-<h1>Add Record</h1>
-<br/>
+<div class="container mt-5 pt-5">
+    <!-- Center the form within the screen and provide a max-width -->
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h1 class="text-center mb-4">Update Record</h1>
 
-<form method="POST">
-	{% csrf_token %}
+                    <!-- Form starts here -->
+                    <form method="POST">
+                        {% csrf_token %}
 
-	{{ form.as_p }}
+                        <!-- Form fields rendered as paragraphs -->
+                        <div class="mb-3">
+                            {{ form.as_p }}
+                        </div>
 
-<br/>
-  <button type="submit" class="btn btn-secondary">Update Record</button>
-
-</form>
-
-
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-secondary w-100">Update Record</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

@@ -1,0 +1,113 @@
+/* Position the login form in the center of the carousel */
+.login-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  /*max-width: 500px;  !* Ensure the login form does not get too large *!*/
+  /*padding: 10px;  !* Add some padding inside the form container *!*/
+  /*z-index: 10;  !* Ensure it sits on top of the carousel *!*/
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Ensure vertical centering */
+}
+/* Reduce the height of the carousel */
+#headerCarousel .carousel-inner img {
+  height: 500px; /* Set a fixed height for the images */
+  object-fit: cover; /* Ensure images cover the area without distortion */
+}
+
+/* Optional: Adjust the carousel container width */
+#headerCarousel {
+  max-width: 1300px; /* Set a max-width to limit the carousel's width */
+  margin: 0 auto; /* Center the carousel on the page */
+}
+
+/* Optional: Adjust carousel controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Make the controls slightly visible */
+}
+
+/* Optional: Adjust carousel caption */
+.carousel-caption {
+  font-size: 14px; /* Reduce the font size of captions */
+}
+
+/* Optional: Increase the height of the form input fields */
+.card input,
+.card textarea {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+/* Optional: Style for card borders and shadow */
+.card {
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Optional: Styling the form's title */
+.card h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+
+.card {
+  background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque background */
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1); /* Light shadow for better focus */
+}
+
+/* Optional: Style the inputs and button for better appearance */
+.card .form-control {
+  margin-bottom: 15px;
+}
+
+.card .btn {
+  padding: 10px;
+  font-size: 16px;
+}
+
+body {
+  padding-top: 70px; /* Adjust this value based on your navbar's height */
+}
+
+
+/* Add spacing between navbar and content */
+body {
+  padding-top: 70px; /* Adjust this based on the height of your navbar */
+}
+
+/* Optional: Add a shadow effect to the card */
+.card {
+  border-radius: 10px;  /* Rounded corners for a modern look */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);  /* Light shadow around the form */
+}
+
+/* Style the form's input fields */
+.card input, .card textarea, .card select {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ddd;  /* Light border around input fields */
+}
+
+/* Style the submit button */
+.card .btn {
+  padding: 10px;
+  font-size: 16px;
+}
+
+/* Responsive form styling */
+@media (max-width: 576px) {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

@@ -1,36 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="card">
-  <div class="card-header"><strong>
-    	{{ record_for_one.first_name }}
-		{{ record_for_one.last_name }}</strong>
-  </div>
-  <div class="card-body">
+<div class="container mt-5">
+  <!-- Card for displaying record details -->
+  <div class="card shadow-lg">
+    <div class="card-header bg-primary text-white text-center">
+      <strong>{{ record_for_one.first_name }} {{ record_for_one.last_name }}</strong>
+    </div>
+    <div class="card-body">
+      <!-- Displaying the record details -->
+      <h5 class="card-title mb-4">Record Details</h5>
 
+      <p class="card-text"><strong>Email: </strong>{{ record_for_one.email }}</p>
+      <p class="card-text"><strong>Phone: </strong>{{ record_for_one.phone }}</p>
+      <p class="card-text"><strong>Address: </strong>{{ record_for_one.address }}</p>
+      <p class="card-text"><strong>Created At: </strong>{{ record_for_one.timestamp }}</p>
+      <p class="card-text"><strong>ID: </strong>{{ record_for_one.id }}</p>
 
-
-<p class="card-text">
-<strong>Email: </strong>{{ record_for_one.email }}</p>
-
-<p class="card-text">
-<strong>Phone: </strong>{{ record_for_one.phone }}
-</p>
-
-<p class="card-text">
-<strong>Address: </strong>{{ record_for_one.address }}</p>
-
-<p class="card-text">
-<strong>Create At: </strong>{{ record_for_one.timestamp }}</p>
-
-<p class="card-text">
-<strong>ID: </strong>{{ record_for_one.id }}</p>
-
-
+      <!-- Action Buttons -->
+      <div class="d-flex justify-content-between mt-4">
+        <a href="{% url 'delete_record' record_for_one.id %}" class="btn btn-danger w-48">Delete</a>
+        <a href="{% url 'home' %}" class="btn btn-secondary w-48">Back</a>
+        <a href="{% url 'edit_record' record_for_one.id %}" class="btn btn-warning w-48">Update Record</a>
+      </div>
+    </div>
   </div>
 </div>
-    <br/><br/>
-    <a href="{% url 'delete_record' record_for_one.id %}" class="btn btn-danger">Delete</a>
-    <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
-    <a href="{% url 'edit_record' record_for_one.id %}" class="btn btn-secondary">Update Record</a>
+
 {% endblock %}
