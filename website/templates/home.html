@@ -4,7 +4,40 @@
 
 {% if user.is_authenticated %}
 
-    <h1>Welcome, {{ user.username }}</h1>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+      <th scope="col">Created At</th>
+      <th scope="col">ID</th>
+    </tr>
+  </thead>
+  <tbody>
+
+{% if records %}
+	{% for record in records %}
+		<tr>
+			<td>{{ record.first_name }} {{ record.last_name }}</td>
+			<td>{{ record.email }}</td>
+			<td>{{ record.phone }}</td>
+			<td>{{ record.address }}</td>
+			<td>{{ record.timestamp}}</td>
+			<td><a href="{% url 'specific_record' record.id %}">{{ record.id }}</a></td>
+		</tr>
+	{% endfor %}
+
+{% endif %}
+
+
+	  </tbody>
+	</table>
+
+
+
 
 {% else %}
 
